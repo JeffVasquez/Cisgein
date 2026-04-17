@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CISGEIN — Seguridad y Salud en el Trabajo 2025</title>
+  <meta name="description" content="CISGEIN — Tu vida y tu trabajo nos importan. Servicios SST: Análisis, Línea Base e Implementación de Sistemas de Gestión." />
+  <meta name="theme-color" content="#050e1a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#050e1a;--surface:#0a1929;--card:#0d2137;
+      --border:rgba(0,180,255,.12);--accent:#00b4ff;--accent2:#00ffc8;
+      --danger:#ff4e4e;--warn:#ffb547;--text:#e8f4fc;--muted:#7fa8c4;
+      --grad:linear-gradient(135deg,#00b4ff 0%,#00ffc8 100%);
+      --ffd:'Syne',sans-serif;--ffb:'DM Sans',sans-serif;
+      --rsm:8px;--rmd:16px;--rlg:24px;
+      --glow:0 0 40px rgba(0,180,255,.18);
+      --t:.3s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--ffb);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+    ::selection{background:var(--accent);color:#000}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+    /* UTILITIES */
+    .container{width:min(1200px,100% - 2rem);margin-inline:auto}
+    section{padding:clamp(4rem,8vw,7rem) 0}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .ba{background:rgba(0,180,255,.12);color:var(--accent);border:1px solid rgba(0,180,255,.3)}
+    .bs{background:rgba(0,255,200,.1);color:var(--accent2);border:1px solid rgba(0,255,200,.25)}
+    .bw{background:rgba(255,181,71,.1);color:var(--warn);border:1px solid rgba(255,181,71,.25)}
+    .bd{background:rgba(255,78,78,.1);color:var(--danger);border:1px solid rgba(255,78,78,.25)}
+    .slabel{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+    .stitle{font-family:var(--ffd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.15;margin-top:.5rem}
+    .stitle span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .divider{width:48px;height:3px;background:var(--grad);border-radius:2px;margin:1rem 0 1.5rem}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--rsm);font-weight:600;font-size:.9rem;transition:all var(--t)}
+    .btn-p{background:var(--grad);color:#000}
+    .btn-p:hover{opacity:.85;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,180,255,.3)}
+    .btn-g{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-g:hover{background:rgba(0,180,255,.06);border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* PROGRESS BAR */
+    #pb{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0;border-radius:0 2px 2px 0;transition:width .1s linear}
+
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:100;transition:background var(--t),box-shadow var(--t)}
+    .nav.scrolled{background:rgba(5,14,26,.93);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--border)}
+    .nav__i{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .logo{font-family:var(--ffd);font-weight:800;font-size:1.4rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em}
+    .nlinks{display:flex;align-items:center;gap:1.75rem;list-style:none}
+    .nlinks a{font-size:.87rem;font-weight:500;color:var(--muted);transition:color var(--t);position:relative}
+    .nlinks a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width var(--t);border-radius:1px}
+    .nlinks a:hover{color:var(--text)}
+    .nlinks a:hover::after{width:100%}
+    .ncta{padding:8px 20px !important;border-radius:var(--rsm) !important;background:var(--grad) !important;color:#000 !important;font-weight:700 !important}
+    .ncta::after{display:none !important}
+    .ncta:hover{opacity:.85;color:#000 !important}
+    .nhbg{display:none;flex-direction:column;gap:5px;padding:4px}
+    .nhbg span{display:block;width:24px;height:2px;background:var(--text);border-radius:1px;transition:var(--t)}
+    .nmob{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,14,26,.97);backdrop-filter:blur(20px);padding:1.5rem;border-bottom:1px solid var(--border);flex-direction:column}
+    .nmob a{font-size:1rem;font-weight:500;color:var(--muted);padding:.75rem 0;border-bottom:1px solid var(--border);display:block;transition:color var(--t)}
+    .nmob a:last-child{border-bottom:none}
+    .nmob a:hover{color:var(--accent)}
+    .nmob.open{display:flex}
+
+    /* HERO */
+    .hero{min-height:100dvh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px}
+    .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,180,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,255,.055) 1px,transparent 1px);background-size:60px 60px;animation:gm 28s linear infinite}
+    @keyframes gm{from{transform:translateY(0)}to{transform:translateY(60px)}}
+    .hg1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,255,.11) 0%,transparent 70%);top:-200px;right:-200px;pointer-events:none}
+    .hg2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,200,.07) 0%,transparent 70%);bottom:-150px;left:-100px;pointer-events:none}
+    .hcontent{position:relative;z-index:2;max-width:680px}
+    .heyebrow{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;animation:fu .8s ease both}
+    .hyear{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.1em}
+    .htitle{font-family:var(--ffd);font-size:clamp(2.4rem,6.5vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;animation:fu .8s .1s ease both}
+    .htitle .gr{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hsub{font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:550px;margin-top:1.25rem;animation:fu .8s .2s ease both}
+    .hactions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem;animation:fu .8s .3s ease both}
+    .hstats{display:flex;gap:2.5rem;margin-top:3.5rem;animation:fu .8s .4s ease both}
+    .hsn{font-family:var(--ffd);font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .hsl{font-size:.78rem;color:var(--muted);margin-top:4px}
+    @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    /* Hero mosaic */
+    .hmosaic{position:absolute;right:0;top:0;bottom:0;width:clamp(300px,42vw,560px);display:grid;grid-template-rows:1fr 4px 1fr;overflow:hidden;z-index:1}
+    .hmosaic::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 40%);z-index:2}
+    .hmosaic img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.9);transition:filter .5s ease}
+    .hmosaic:hover img{filter:brightness(.85) saturate(1)}
+    .hdiv{background:var(--grad);z-index:3;position:relative}
+
+    /* MARQUEE */
+    .marquee{padding:.85rem 0;overflow:hidden;background:rgba(0,180,255,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .mtrack{display:flex;gap:3rem;animation:mq 22s linear infinite;white-space:nowrap;width:max-content}
+    .mitem{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+    .mdot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* SERVICIOS */
+    .svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem}
+    .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+    .scard{background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:2.25rem;position:relative;overflow:hidden;transition:transform var(--t),box-shadow var(--t),border-color var(--t);display:flex;flex-direction:column;gap:1.25rem}
+    .scard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
+    .scard:hover{transform:translateY(-8px);box-shadow:var(--glow);border-color:rgba(0,180,255,.3)}
+    .scard:hover::before{transform:scaleX(1)}
+    .scard--ft{border-color:rgba(0,180,255,.35);background:linear-gradient(135deg,rgba(0,180,255,.07) 0%,rgba(0,255,200,.04) 100%)}
+    .scard--ft::before{transform:scaleX(1)}
+    .snum{font-family:var(--ffd);font-size:3.5rem;font-weight:800;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.22;position:absolute;top:1.5rem;right:1.75rem;user-select:none}
+    .sicon{width:56px;height:56px;border-radius:var(--rsm);background:rgba(0,180,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+    .stit{font-family:var(--ffd);font-size:1.25rem;font-weight:800;line-height:1.2}
+    .sdesc{font-size:.91rem;color:var(--muted);line-height:1.75}
+    .slist{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-top:.25rem}
+    .slist li{font-size:.87rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px}
+    .slist li::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0}
+    .scta{margin-top:auto;padding-top:1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .slink{font-size:.85rem;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:6px;transition:gap var(--t)}
+    .slink:hover{gap:10px}
+
+    /* HSEQ */
+    .hseq{background:var(--surface)}
+    .hseq-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .hseq-img{border-radius:var(--rlg);overflow:hidden;border:1px solid var(--border);box-shadow:var(--glow);position:relative}
+    .hseq-img img{width:100%;height:auto;display:block}
+    .hseq-img-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,180,255,.07) 0%,transparent 70%);pointer-events:none}
+    .hpillars{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+    .hpillar{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.4rem;background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);transition:border-color var(--t),transform var(--t)}
+    .hpillar:hover{border-color:var(--accent);transform:translateX(4px)}
+    .hpillar-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+    .hpillar-title{font-weight:700;font-size:.95rem;margin-bottom:.2rem}
+    .hpillar-norm{font-size:.8rem;color:var(--accent2);font-weight:600}
+
+    /* PILARES */
+    .pil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
+    .pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);padding:2rem 1.75rem;transition:transform var(--t),box-shadow var(--t),border-color var(--t);position:relative;overflow:hidden}
+    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
+    .pcard:hover{transform:translateY(-6px);box-shadow:var(--glow);border-color:rgba(0,180,255,.3)}
+    .pcard:hover::before{transform:scaleX(1)}
+    .picon{width:52px;height:52px;border-radius:var(--rsm);background:rgba(0,180,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem}
+    .ptit{font-family:var(--ffd);font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+    .ptxt{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+    /* MANUAL */
+    .man-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+    .plist{list-style:none;display:flex;flex-direction:column;gap:1rem}
+    .pitem{display:flex;gap:1rem;padding:1.2rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);transition:border-color var(--t),transform var(--t)}
+    .pitem:hover{border-color:var(--accent);transform:translateX(4px)}
+    .pnum{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--grad);color:#000;font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center;font-family:var(--ffd)}
+    .ptitle{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+    .pdesc{font-size:.85rem;color:var(--muted)}
+
+    /* ACORDEÓN */
+    .acc{display:flex;flex-direction:column;gap:.75rem}
+    .acc-item{background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);overflow:hidden}
+    .acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;font-weight:600;font-size:.95rem;text-align:left;transition:background var(--t)}
+    .acc-trigger:hover{background:rgba(0,180,255,.04)}
+    .acc-arrow{width:22px;height:22px;border-radius:50%;background:rgba(0,180,255,.12);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.6rem;transition:transform var(--t);flex-shrink:0}
+    .acc-item.open .acc-arrow{transform:rotate(180deg)}
+    .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    .acc-item.open .acc-body{max-height:400px}
+    .acc-content{padding:0 1.5rem 1.25rem;font-size:.88rem;color:var(--muted);line-height:1.75;border-top:1px solid var(--border);padding-top:1rem}
+
+    /* GALERÍA */
+    .g-tabs{display:flex;gap:.5rem;margin:2rem 0 2.5rem;flex-wrap:wrap}
+    .tbtn{padding:8px 20px;border-radius:100px;font-size:.84rem;font-weight:600;color:var(--muted);border:1px solid var(--border);transition:all var(--t)}
+    .tbtn.active,.tbtn:hover{background:var(--grad);color:#000;border-color:transparent}
+    .g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+    .gcard{position:relative;border-radius:var(--rmd);overflow:hidden;aspect-ratio:4/3;cursor:pointer;border:1px solid var(--border)}
+    .gcard img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .gcard:hover img{transform:scale(1.08)}
+    .goverlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,14,26,.9) 0%,transparent 60%);opacity:0;transition:opacity var(--t);display:flex;align-items:flex-end;padding:1.25rem}
+    .gcard:hover .goverlay{opacity:1}
+    .glabel{font-size:.88rem;font-weight:600}
+    .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(10px)}
+    .lightbox.open{display:flex}
+    .lb-img{max-width:90vw;max-height:85vh;border-radius:var(--rmd);object-fit:contain;animation:fi .3s ease}
+    .lb-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background var(--t)}
+    .lb-close:hover{background:rgba(255,255,255,.2)}
+    @keyframes fi{from{opacity:0}to{opacity:1}}
+
+    /* NORMATIVA */
+    .norm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:3rem}
+    .ncard{background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);padding:1.75rem;display:flex;gap:1rem;transition:all var(--t)}
+    .ncard:hover{border-color:rgba(0,255,200,.3);transform:translateY(-4px)}
+    .nico{flex-shrink:0;font-size:1.75rem;line-height:1}
+    .ntit{font-family:var(--ffd);font-weight:700;font-size:.95rem;margin-bottom:.4rem}
+    .ncode{font-size:.78rem;color:var(--accent2);font-weight:600;margin-bottom:.5rem}
+    .ndesc{font-size:.85rem;color:var(--muted)}
+
+    /* RIESGOS */
+    .rtbl-wrap{overflow-x:auto;border-radius:var(--rmd);border:1px solid var(--border);margin-top:2.5rem}
+    table{width:100%;border-collapse:collapse;font-size:.9rem}
+    thead{background:rgba(0,180,255,.08)}
+    th{padding:1rem 1.25rem;text-align:left;font-family:var(--ffd);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+    td{padding:.9rem 1.25rem;border-bottom:1px solid var(--border);vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tbody tr{transition:background var(--t)}
+    tbody tr:hover{background:rgba(0,180,255,.04)}
+    .rdot{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+    .rdot::before{content:'';width:10px;height:10px;border-radius:50%;flex-shrink:0}
+    .r1::before{background:#4caf50}.r2::before{background:#8bc34a}.r3::before{background:var(--warn)}.r4::before{background:#ff7043}.r5::before{background:var(--danger)}
+
+    /* CONTACTO */
+    .cta-s{background:linear-gradient(135deg,rgba(0,180,255,.06) 0%,rgba(0,255,200,.04) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .form-g{display:flex;flex-direction:column;gap:.4rem}
+    .flabel{font-size:.82rem;font-weight:600;color:var(--muted);letter-spacing:.04em}
+    .finput,.fselect,.ftxt{background:var(--card);border:1px solid var(--border);border-radius:var(--rsm);padding:12px 16px;color:var(--text);font-family:var(--ffb);font-size:.92rem;transition:border-color var(--t),box-shadow var(--t);outline:none;width:100%}
+    .finput:focus,.fselect:focus,.ftxt:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,180,255,.12)}
+    .fselect{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8c4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+    .fselect option{background:var(--card)}
+    .ftxt{resize:vertical;min-height:110px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .fcols{display:flex;flex-direction:column;gap:1rem}
+
+    /* CLIENTES CARRUSEL */
+    .clientes{background:#f0f2f5;padding:clamp(3.5rem,7vw,6rem) 0;overflow:hidden;position:relative}
+    .clientes::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%,rgba(0,180,255,.07) 0%,transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 50%,rgba(0,255,200,.05) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .clientes-head{text-align:center;margin-bottom:3rem;position:relative;z-index:1}
+    .clientes-head .slabel{color:#0099d6}
+    .clientes-head .stitle{color:#0d1f2d}
+    .clientes-head .stitle span{background:linear-gradient(135deg,#0099d6 0%,#00c9a7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .clientes-head .divider{background:linear-gradient(135deg,#0099d6 0%,#00c9a7 100%)}
+    .clientes-head p{color:#4a6274}
+    .clientes-counter{display:flex;justify-content:center;gap:3rem;margin-top:2rem;flex-wrap:wrap}
+    .ccount-num{font-family:var(--ffd);font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#0099d6 0%,#00c9a7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .ccount-lbl{font-size:.78rem;color:#4a6274;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+
+    /* Franja del carrusel */
+    .carousel-wrap{
+      position:relative;overflow:hidden;
+      padding:22px 0;
+    }
+    .carousel-wrap::before,.carousel-wrap::after{
+      content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;
+    }
+    .carousel-wrap::before{left:0;background:linear-gradient(to right,#f0f2f5 0%,transparent 100%)}
+    .carousel-wrap::after{right:0;background:linear-gradient(to left,#f0f2f5 0%,transparent 100%)}
+
+    .carousel-track{display:flex;gap:0;width:max-content}
+    .carousel-track--fwd{animation:cFwd 42s linear infinite}
+    .carousel-track--rev{animation:cRev 42s linear infinite}
+    .carousel-track:hover{animation-play-state:paused}
+    @keyframes cFwd{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes cRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+    /* ── LOGO CARD 3D ── */
+    .logo-card{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+      width:190px;flex-shrink:0;height:100px;margin:0 12px;
+      background:#ffffff;
+      border:1.5px solid rgba(0,0,0,.08);
+      border-radius:18px;
+      padding:14px 18px;cursor:pointer;
+      position:relative;overflow:hidden;
+      /* 3D base */
+      transform-style:preserve-3d;
+      perspective:700px;
+      will-change:transform;
+      transition:box-shadow .15s ease, border-color .25s ease;
+      box-shadow:
+        0 4px 14px rgba(0,0,0,.08),
+        0 1px 3px rgba(0,0,0,.04),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
+    /* Sheen layer — top-left light reflection */
+    .logo-card::before{
+      content:'';position:absolute;inset:0;border-radius:18px;
+      background:linear-gradient(135deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 55%);
+      pointer-events:none;z-index:3;
+      transition:opacity .25s ease;
+    }
+    /* Bottom color glow — revealed on hover via JS */
+    .logo-card::after{
+      content:'';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+      width:70%;height:30px;border-radius:50%;
+      background:radial-gradient(ellipse,rgba(0,180,255,.45) 0%,transparent 70%);
+      filter:blur(8px);opacity:0;
+      transition:opacity .3s ease;pointer-events:none;z-index:0;
+    }
+    .logo-card:hover::after{opacity:1}
+    .logo-card svg{
+      width:100%;height:68px;position:relative;z-index:1;
+      transition:filter .2s ease,transform .2s ease;
+      filter:saturate(1.4) contrast(1.05);
+    }
+    .logo-card:hover svg{
+      filter:saturate(1.7) contrast(1.1) drop-shadow(0 3px 8px rgba(0,0,0,.18));
+      transform:translateZ(6px);
+    }
+    .logo-card .logo-badge{
+      font-family:var(--ffd);font-weight:700;font-size:.68rem;
+      color:#6b8499;letter-spacing:.04em;text-align:center;
+      position:relative;z-index:2;line-height:1;
+      transition:color .2s ease;
+    }
+    .logo-card:hover .logo-badge{color:#0099d6}
+
+    /* FOOTER */
+    .footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem 0 2rem}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+    .fbrand{font-family:var(--ffd);font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem}
+    .ftag{font-size:.9rem;color:var(--muted);max-width:260px;line-height:1.7}
+    .fctitle{font-family:var(--ffd);font-weight:700;font-size:.83rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem}
+    .flinks{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+    .flinks a{font-size:.88rem;color:var(--muted);transition:color var(--t)}
+    .flinks a:hover{color:var(--text)}
+    .fbot{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;font-size:.82rem;color:var(--muted)}
+    .fleg{display:flex;gap:1.5rem}
+    .fleg a{color:var(--muted);transition:color var(--t)}
+    .fleg a:hover{color:var(--accent)}
+
+    /* BACK TO TOP */
+    #btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--grad);color:#000;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,180,255,.35);opacity:0;transform:translateY(20px);transition:all var(--t);z-index:90}
+    #btt.visible{opacity:1;transform:translateY(0)}
+    #btt:hover{transform:translateY(-4px)}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hmosaic,.svc-intro,.cta-inner,.hseq-inner,.man-layout{grid-template-columns:1fr;gap:2rem}
+      .hmosaic{display:none}
+    }
+    @media(max-width:768px){
+      .nlinks{display:none}
+      .nhbg{display:flex}
+      .fg{grid-template-columns:1fr 1fr}
+      .hstats{gap:1.5rem}
+      .frow{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .fg{grid-template-columns:1fr}
+      .fbot{flex-direction:column;gap:1rem;text-align:center}
+      .g-grid{grid-template-columns:1fr 1fr}
+      .hstats{flex-wrap:wrap;gap:1.25rem}
+    }
+
+    /* ═══════════════════════════════════════
+       WHATSAPP BUTTON
+    ═══════════════════════════════════════ */
+    #wa-btn{
+      position:fixed;bottom:6rem;right:2rem;z-index:95;
+      display:flex;align-items:center;gap:10px;
+      background:#25d366;color:#fff;
+      border-radius:50px;padding:12px 20px 12px 14px;
+      font-weight:700;font-size:.9rem;
+      box-shadow:0 6px 28px rgba(37,211,102,.5);
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+      text-decoration:none;
+      animation:waPulse 2.5s ease-in-out infinite;
+      user-select:none;
+    }
+    #wa-btn:hover{
+      background:#1ebe5d;transform:translateY(-4px) scale(1.05);
+      box-shadow:0 12px 36px rgba(37,211,102,.6);
+      animation:none;
+    }
+    #wa-btn svg{width:28px;height:28px;flex-shrink:0}
+    #wa-label{white-space:nowrap;letter-spacing:.01em}
+    @keyframes waPulse{
+      0%,100%{box-shadow:0 6px 28px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,.4)}
+      50%{box-shadow:0 6px 28px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,0)}
+    }
+    @media(max-width:480px){
+      #wa-btn{bottom:5.5rem;right:1rem;padding:10px 14px 10px 12px;font-size:.82rem}
+      #wa-label{display:none}
+    }
+
+    /* ═══════════════════════════════════════
+       EFECTOS CSS GLOBALES MEJORADOS
+    ═══════════════════════════════════════ */
+
+    /* Partículas flotantes de fondo */
+    .particles-bg{
+      position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+    }
+    .particle{
+      position:absolute;border-radius:50%;
+      background:radial-gradient(circle,rgba(0,180,255,.5) 0%,transparent 70%);
+      animation:floatPart linear infinite;
+      will-change:transform,opacity;
+    }
+
+    /* Efecto glow en secciones al hacer scroll */
+    section{position:relative}
+    section::before{
+      content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+      background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(0,180,255,.03) 0%,transparent 70%);
+    }
+    section > *{position:relative;z-index:1}
+
+    /* Líneas de escaneo sutiles */
+    body::after{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
+      background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,180,255,.008) 2px,rgba(0,180,255,.008) 4px);
+      animation:scanlines 8s linear infinite;
+    }
+    @keyframes scanlines{from{transform:translateY(0)}to{transform:translateY(4px)}}
+
+    /* Cards con efecto aurora en hover */
+    .scard,.pcard,.ncard,.hpillar,.pitem{
+      transition:transform var(--t),box-shadow var(--t),border-color var(--t);
+    }
+    .scard::after,.pcard::after{
+      content:'';position:absolute;inset:0;border-radius:inherit;
+      background:conic-gradient(from 180deg at 50% 50%,
+        rgba(0,180,255,0) 0deg,
+        rgba(0,180,255,.08) 90deg,
+        rgba(0,255,200,.06) 180deg,
+        rgba(0,180,255,0) 270deg);
+      opacity:0;transition:opacity .5s ease;pointer-events:none;z-index:0;
+    }
+    .scard:hover::after,.pcard:hover::after{opacity:1}
+
+    /* Efecto de texto brillante en títulos */
+    .stitle,.htitle{
+      position:relative;
+    }
+
+    /* Borde animado en tarjetas */
+    @keyframes borderRotate{
+      from{transform:rotate(0deg)}to{transform:rotate(360deg)}
+    }
+
+    /* Efecto hover en logo navbar */
+    .logo{
+      transition:filter .3s ease, letter-spacing .3s ease;
+      filter:drop-shadow(0 0 0px rgba(0,180,255,0));
+    }
+    .logo:hover{
+      filter:drop-shadow(0 0 12px rgba(0,180,255,.6));
+      letter-spacing:.02em;
+    }
+
+    /* Animación de entrada para hero mejorada */
+    @keyframes fu{
+      from{opacity:0;transform:translateY(24px) scale(.98)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    /* Glitch effect suave en hover del logo */
+    .logo:hover{animation:glitch .4s ease once}
+    @keyframes glitch{
+      0%{text-shadow:none}
+      20%{text-shadow:-2px 0 rgba(0,180,255,.5),2px 0 rgba(0,255,200,.5)}
+      40%{text-shadow:2px 0 rgba(0,180,255,.5),-2px 0 rgba(0,255,200,.5)}
+      60%{text-shadow:-1px 0 rgba(0,180,255,.3)}
+      80%{text-shadow:1px 0 rgba(0,255,200,.3)}
+      100%{text-shadow:none}
+    }
+
+    /* Efecto neon en badges */
+    .badge{
+      transition:all .3s ease;
+    }
+    .ba:hover{box-shadow:0 0 12px rgba(0,180,255,.4);transform:scale(1.05)}
+    .bs:hover{box-shadow:0 0 12px rgba(0,255,200,.4);transform:scale(1.05)}
+    .bw:hover{box-shadow:0 0 12px rgba(255,181,71,.4);transform:scale(1.05)}
+    .bd:hover{box-shadow:0 0 12px rgba(255,78,78,.4);transform:scale(1.05)}
+
+    /* Efecto en barras de progreso y divisores */
+    .divider{
+      animation:divGrow .8s ease both;
+      transform-origin:left;
+    }
+    @keyframes divGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* 3D Logo cards — handled by JS tilt below */
+
+    /* Cursor personalizado */
+    * { cursor: default; }
+    a, button { cursor: pointer; }
+
+    /* Efecto ripple en botones */
+    .btn{position:relative;overflow:hidden}
+    .btn .ripple{
+      position:absolute;border-radius:50%;
+      background:rgba(255,255,255,.25);
+      transform:scale(0);animation:rippleAnim .6s linear;
+      pointer-events:none;
+    }
+    @keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+
+    /* Gradiente animado en el hero */
+    .hero{
+      background:
+        radial-gradient(ellipse 100% 80% at 70% 50%, rgba(0,180,255,.04) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* Flotación suave en estadísticas */
+    .hstats > div{
+      animation:floatStat 3s ease-in-out infinite;
+    }
+    .hstats > div:nth-child(2){animation-delay:.5s}
+    .hstats > div:nth-child(3){animation-delay:1s}
+    @keyframes floatStat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-5px)}
+    }
+
+    /* Efecto glassmorphism en nav */
+    .nav.scrolled{
+      background:rgba(5,14,26,.85) !important;
+      backdrop-filter:blur(24px) saturate(180%) !important;
+    }
+
+    /* Typing cursor en hero */
+    .htitle::after{
+      display:none;
+    }
+
+    /* Tooltip en logo cards */
+    .logo-card[title]:hover::after{
+      content:attr(data-tooltip);
+      position:absolute;bottom:calc(100% + 8px);left:50%;
+      transform:translateX(-50%);
+      background:rgba(5,14,26,.95);color:#e8f4fc;
+      font-size:.72rem;font-weight:600;
+      padding:4px 10px;border-radius:6px;
+      white-space:nowrap;pointer-events:none;z-index:10;
+      border:1px solid var(--border);
+    }
+
+    /* Shimmer en secciones de fondo claro */
+    .clientes{
+      position:relative;
+    }
+
+    @keyframes floatPart{
+      0%{transform:translateY(100vh) scale(0);opacity:0}
+      10%{opacity:1}
+      90%{opacity:.5}
+      100%{transform:translateY(-10vh) scale(1.5);opacity:0}
+    }
+
+    /* Scroll snap suave */
+    html{scroll-behavior:smooth;scroll-padding-top:68px}
+  </style>
+</head>
+<body>
+
+<div id="pb" role="progressbar" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+  <div class="container nav__i">
+    <a href="#inicio" class="logo" aria-label="CISGEIN">CISGEIN</a>
+    <ul class="nlinks" role="list">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#hseq">HSEQ</a></li>
+      <li><a href="#pilares">Pilares</a></li>
+      <li><a href="#manual">Manual</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#normativa">Normativa</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#contacto" class="ncta">Contáctanos</a></li>
+    </ul>
+    <button class="nhbg" id="hbg" aria-label="Abrir menú" aria-expanded="false" aria-controls="nmob">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nmob" id="nmob" role="menu">
+  <a href="#servicios"  role="menuitem">Servicios</a>
+  <a href="#hseq"       role="menuitem">Sistema HSEQ</a>
+  <a href="#pilares"    role="menuitem">Pilares SST</a>
+  <a href="#manual"     role="menuitem">Manual</a>
+  <a href="#galeria"    role="menuitem">Galería</a>
+  <a href="#normativa"  role="menuitem">Normativa</a>
+  <a href="#clientes"   role="menuitem">Nuestros Clientes</a>
+  <a href="#riesgos"    role="menuitem">Riesgos</a>
+  <a href="#contacto"   role="menuitem">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio" aria-label="Inicio">
+  <div class="hgrid" aria-hidden="true"></div>
+  <div class="hg1"   aria-hidden="true"></div>
+  <div class="hg2"   aria-hidden="true"></div>
+  <div class="container">
+    <div class="hcontent">
+      <div class="heyebrow">
+        <span class="badge ba">⚡ CISGEIN 2025</span>
+        <span class="hyear">Ley N° 29783 · ISO 45001 · Perú</span>
+      </div>
+      <h1 class="htitle">Tu <span class="gr">vida</span> y tu<br><span class="gr">trabajo</span><br>nos importan</h1>
+      <p class="hsub">Sistema Integrado de Gestión en Seguridad y Salud en el Trabajo. Análisis, Implementación y Consultoría especializada para proteger lo que más importa: las personas.</p>
+      <div class="hactions">
+        <a href="#servicios" class="btn btn-p">🛡️ Ver Servicios</a>
+        <a href="#manual"    class="btn btn-g">📋 Manual de Prácticas</a>
+      </div>
+      <div class="hstats">
+        <div><div class="hsn">29783</div><div class="hsl">Ley de referencia</div></div>
+        <div><div class="hsn">100%</div><div class="hsl">Cumplimiento legal</div></div>
+        <div><div class="hsn">HSEQ</div><div class="hsl">Sistema integrado</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Mosaico con imágenes reales -->
+  <div class="hmosaic" aria-hidden="true">
+    <img src="Inspecci_n_Seguridad_Industrial.png" alt="" loading="eager" />
+    <div class="hdiv"></div>
+    <img src="Escena_Seguridad_Industrial.png" alt="" loading="eager" />
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="mtrack">
+    <span class="mitem"><span class="mdot"></span>Prevención de Accidentes</span>
+    <span class="mitem"><span class="mdot"></span>Identificación de Peligros</span>
+    <span class="mitem"><span class="mdot"></span>Evaluación IPERC</span>
+    <span class="mitem"><span class="mdot"></span>EPP Certificados</span>
+    <span class="mitem"><span class="mdot"></span>Ley N° 29783</span>
+    <span class="mitem"><span class="mdot"></span>ISO 45001 · ISO 14001 · ISO 9001</span>
+    <span class="mitem"><span class="mdot"></span>Línea Base SST</span>
+    <span class="mitem"><span class="mdot"></span>Plan de Emergencias</span>
+    <span class="mitem"><span class="mdot"></span>Prevención de Accidentes</span>
+    <span class="mitem"><span class="mdot"></span>Identificación de Peligros</span>
+    <span class="mitem"><span class="mdot"></span>Evaluación IPERC</span>
+    <span class="mitem"><span class="mdot"></span>EPP Certificados</span>
+    <span class="mitem"><span class="mdot"></span>Ley N° 29783</span>
+    <span class="mitem"><span class="mdot"></span>ISO 45001 · ISO 14001 · ISO 9001</span>
+    <span class="mitem"><span class="mdot"></span>Línea Base SST</span>
+    <span class="mitem"><span class="mdot"></span>Plan de Emergencias</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios" aria-labelledby="svc-title">
+  <div class="container">
+    <div class="svc-intro reveal">
+      <div>
+        <span class="slabel">Nuestros Servicios</span>
+        <h2 class="stitle" id="svc-title">Soluciones <span>SST</span> integrales</h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);font-size:.95rem;line-height:1.75;">Servicios especializados que cubren todo el ciclo de gestión en SST: desde el diagnóstico inicial hasta la implementación y mantenimiento del sistema.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;">✅</span>
+          <div><div style="font-weight:700;font-size:.92rem;">Equipo Certificado</div><div style="font-size:.82rem;color:var(--muted);">Especialistas con certificaciones ISO y experiencia sectorial</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;">📊</span>
+          <div><div style="font-weight:700;font-size:.92rem;">Resultados Medibles</div><div style="font-size:.82rem;color:var(--muted);">Indicadores de desempeño y seguimiento continuo</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rmd);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;">🇵🇪</span>
+          <div><div style="font-weight:700;font-size:.92rem;">Alineado a Ley 29783</div><div style="font-size:.82rem;color:var(--muted);">100% conforme con la normativa peruana vigente</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-grid">
+      <!-- 01 ANÁLISIS -->
+      <article class="scard scard--ft reveal" style="transition-delay:.0s">
+        <div class="snum" aria-hidden="true">01</div>
+        <div class="sicon">🔍</div>
+        <span class="badge ba" style="width:fit-content;">Diagnóstico</span>
+        <h3 class="stit">Análisis SST</h3>
+        <p class="sdesc">Evaluación exhaustiva del estado actual de seguridad de tu organización. Identificamos brechas, peligros no controlados y oportunidades de mejora mediante metodologías validadas y visitas de campo.</p>
+        <ul class="slist">
+          <li>Diagnóstico organizacional integral de SST</li>
+          <li>Identificación de peligros y evaluación de riesgos (IPERC)</li>
+          <li>Análisis de incidentes y accidentabilidad histórica</li>
+          <li>Revisión de documentación y registros obligatorios</li>
+          <li>Informe ejecutivo con hallazgos priorizados</li>
+        </ul>
+        <div class="scta">
+          <span class="badge bs">ISO 45001 · Ley 29783</span>
+          <a href="#contacto" class="slink">Solicitar análisis →</a>
+        </div>
+      </article>
+
+      <!-- 02 LÍNEA BASE -->
+      <article class="scard reveal" style="transition-delay:.08s">
+        <div class="snum" aria-hidden="true">02</div>
+        <div class="sicon">📐</div>
+        <span class="badge bw" style="width:fit-content;">Diagnóstico Inicial</span>
+        <h3 class="stit">Implementación de Línea Base</h3>
+        <p class="sdesc">Establecemos el punto de partida cuantitativo de tu sistema SST. La línea base es la fotografía inicial que permite medir avances reales y cumplir con los requisitos del D.S. 005-2012-TR.</p>
+        <ul class="slist">
+          <li>Aplicación del cuestionario de línea base (DS 005-2012-TR)</li>
+          <li>Evaluación por módulos: política, planificación, implementación, verificación</li>
+          <li>Cálculo del índice de cumplimiento por cada eje</li>
+          <li>Mapa de calor de brechas y priorización de acciones</li>
+          <li>Plan de acción con cronograma y responsables</li>
+        </ul>
+        <div class="scta">
+          <span class="badge bw">D.S. 005-2012-TR</span>
+          <a href="#contacto" class="slink">Solicitar línea base →</a>
+        </div>
+      </article>
+
+      <!-- 03 IMPLEMENTACIÓN -->
+      <article class="scard reveal" style="transition-delay:.16s">
+        <div class="snum" aria-hidden="true">03</div>
+        <div class="sicon">🏗️</div>
+        <span class="badge bs" style="width:fit-content;">Sistema de Gestión</span>
+        <h3 class="stit">Implementación SGSST</h3>
+        <p class="sdesc">Diseñamos, documentamos e implementamos tu Sistema de Gestión SST de forma completa. Acompañamos a tu equipo en cada etapa hasta lograr la operatividad plena del sistema.</p>
+        <ul class="slist">
+          <li>Política y objetivos SST alineados a la estrategia empresarial</li>
+          <li>Elaboración de IPERC, PETS, PETAR y procedimientos críticos</li>
+          <li>Programa anual de capacitación y entrenamiento</li>
+          <li>Plan de emergencias y simulacros</li>
+          <li>Registros obligatorios del SGSST</li>
+          <li>Auditoría interna y revisión por la dirección</li>
+        </ul>
+        <div class="scta">
+          <span class="badge bs">ISO 45001:2018</span>
+          <a href="#contacto" class="slink">Iniciar implementación →</a>
+        </div>
+      </article>
+
+      <!-- 04 CAPACITACIÓN -->
+      <article class="scard reveal" style="transition-delay:.24s">
+        <div class="snum" aria-hidden="true">04</div>
+        <div class="sicon">📚</div>
+        <span class="badge ba" style="width:fit-content;">Formación</span>
+        <h3 class="stit">Capacitación y Entrenamiento</h3>
+        <p class="sdesc">Programas formativos para todos los niveles: desde inducción básica hasta formación avanzada de supervisores y brigadas de emergencias con certificados de validez legal.</p>
+        <ul class="slist">
+          <li>Inducción general y específica SST</li>
+          <li>Trabajo en altura, espacios confinados, LOTO</li>
+          <li>Manejo de sustancias peligrosas (GHS/SDS)</li>
+          <li>Brigadas: primeros auxilios, evacuación, contra incendios</li>
+          <li>Certificados con validez legal</li>
+        </ul>
+        <div class="scta">
+          <span class="badge ba">Art. 35 · Ley 29783</span>
+          <a href="#contacto" class="slink">Ver programas →</a>
+        </div>
+      </article>
+
+      <!-- 05 AUDITORÍA -->
+      <article class="scard reveal" style="transition-delay:.32s">
+        <div class="snum" aria-hidden="true">05</div>
+        <div class="sicon">🔎</div>
+        <span class="badge bd" style="width:fit-content;">Verificación</span>
+        <h3 class="stit">Auditorías SST</h3>
+        <p class="sdesc">Evaluaciones independientes del desempeño de tu sistema. Auditorías internas de primera parte o de preparación para certificación ISO 45001 con auditores calificados.</p>
+        <ul class="slist">
+          <li>Auditoría interna bajo ISO 19011:2018</li>
+          <li>Pre-auditoría de certificación ISO 45001</li>
+          <li>Inspecciones planeadas e inopinadas</li>
+          <li>Informe de no conformidades y mejoras</li>
+          <li>Seguimiento a planes de acción correctiva</li>
+        </ul>
+        <div class="scta">
+          <span class="badge bd">ISO 19011 · ISO 45001</span>
+          <a href="#contacto" class="slink">Agendar auditoría →</a>
+        </div>
+      </article>
+
+      <!-- 06 AMBIENTAL -->
+      <article class="scard reveal" style="transition-delay:.4s">
+        <div class="snum" aria-hidden="true">06</div>
+        <div class="sicon">🌿</div>
+        <span class="badge bs" style="width:fit-content;">Medio Ambiente</span>
+        <h3 class="stit">Gestión Ambiental</h3>
+        <p class="sdesc">Implementamos el componente ambiental del sistema integrado HSEQ. Gestión de residuos, aspectos e impactos ambientales y planes de contingencia alineados a ISO 14001.</p>
+        <ul class="slist">
+          <li>Identificación de aspectos e impactos ambientales</li>
+          <li>Plan de manejo de residuos sólidos</li>
+          <li>Monitoreos ambientales (aire, agua, ruido)</li>
+          <li>Plan de contingencias ambientales</li>
+          <li>Alineación ISO 14001:2015</li>
+        </ul>
+        <div class="scta">
+          <span class="badge bs">ISO 14001:2015</span>
+          <a href="#contacto" class="slink">Más información →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HSEQ DIAGRAM -->
+<section id="hseq" class="hseq" aria-labelledby="hseq-title">
+  <div class="container">
+    <div class="hseq-inner">
+      <div class="reveal">
+        <span class="slabel">Sistema Integrado</span>
+        <h2 class="stitle" id="hseq-title">Sistema de Gestión <span>HSEQ</span></h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);font-size:.95rem;max-width:480px;line-height:1.75;margin-bottom:1.5rem;">HSEQ integra en un solo sistema los cuatro pilares de la excelencia operacional. Un enfoque unificado que optimiza recursos, reduce brechas y fortalece la cultura organizacional.</p>
+        <div class="hpillars">
+          <div class="hpillar"><div class="hpillar-icon">🏥</div><div><div class="hpillar-title">Health — Salud</div><div class="hpillar-norm">ISO 45001:2018</div></div></div>
+          <div class="hpillar"><div class="hpillar-icon">🛡️</div><div><div class="hpillar-title">Safety — Seguridad</div><div class="hpillar-norm">Ley 29783 · D.S. 005-2012-TR</div></div></div>
+          <div class="hpillar"><div class="hpillar-icon">🌿</div><div><div class="hpillar-title">Environment — Medio Ambiente</div><div class="hpillar-norm">ISO 14001:2015</div></div></div>
+          <div class="hpillar"><div class="hpillar-icon">✅</div><div><div class="hpillar-title">Quality — Calidad</div><div class="hpillar-norm">ISO 9001:2015</div></div></div>
+        </div>
+      </div>
+      <div class="hseq-img reveal" style="transition-delay:.1s">
+        <img src="Diagrama_HSEQ_Espa_ol.png" alt="Diagrama Sistema de Gestión HSEQ — Salud, Seguridad, Medio Ambiente, Calidad — ISO 45001, ISO 14001, ISO 9001" loading="lazy" />
+        <div class="hseq-img-glow" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" aria-labelledby="pil-title">
+  <div class="container">
+    <div class="reveal">
+      <span class="slabel">Fundamentos</span>
+      <h2 class="stitle" id="pil-title">Los <span>4 Pilares</span> de la SST</h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);max-width:560px;font-size:.95rem;">Un sistema robusto se construye sobre pilares sólidos que protegen integralmente al trabajador y a la organización.</p>
+    </div>
+    <div class="pil-grid">
+      <article class="pcard reveal" style="transition-delay:.05s"><div class="picon">🛡️</div><h3 class="ptit">Prevención</h3><p class="ptxt">Identificar y controlar los peligros antes de que causen daño. Cultura proactiva en todos los niveles organizacionales.</p><div style="margin-top:1rem"><span class="badge ba">IPERC</span></div></article>
+      <article class="pcard reveal" style="transition-delay:.1s"><div class="picon">📚</div><h3 class="ptit">Capacitación</h3><p class="ptxt">Todo trabajador debe recibir formación adecuada sobre los riesgos de su puesto y las medidas de control aplicadas.</p><div style="margin-top:1rem"><span class="badge bs">Art. 35 Ley 29783</span></div></article>
+      <article class="pcard reveal" style="transition-delay:.15s"><div class="picon">🔍</div><h3 class="ptit">Control y Monitoreo</h3><p class="ptxt">Inspecciones periódicas, auditorías internas y seguimiento de indicadores garantizan la mejora continua.</p><div style="margin-top:1rem"><span class="badge bw">PDCA</span></div></article>
+      <article class="pcard reveal" style="transition-delay:.2s"><div class="picon">🚨</div><h3 class="ptit">Respuesta ante Emergencias</h3><p class="ptxt">Planes de contingencia, simulacros y brigadas entrenadas aseguran una respuesta oportuna ante incidentes.</p><div style="margin-top:1rem"><span class="badge bd">Plan de Evacuación</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- MANUAL -->
+<section id="manual" style="background:var(--surface)" aria-labelledby="man-title">
+  <div class="container">
+    <div class="reveal"><span class="slabel">Manual</span><h2 class="stitle" id="man-title">Buenas <span>Prácticas</span> SST</h2><div class="divider"></div></div>
+    <div class="man-layout">
+      <div class="reveal">
+        <ul class="plist" role="list">
+          <li class="pitem"><div class="pnum">01</div><div><div class="ptitle">Uso obligatorio de EPP</div><div class="pdesc">Casco, guantes, lentes y calzado de seguridad según el área de trabajo.</div></div></li>
+          <li class="pitem"><div class="pnum">02</div><div><div class="ptitle">Orden y limpieza (5S)</div><div class="pdesc">Mantener el área limpia y ordenada reduce hasta 30% los incidentes.</div></div></li>
+          <li class="pitem"><div class="pnum">03</div><div><div class="ptitle">Señalización adecuada</div><div class="pdesc">Señales de peligro, obligación y emergencia visibles y actualizadas.</div></div></li>
+          <li class="pitem"><div class="pnum">04</div><div><div class="ptitle">Reporte de incidentes</div><div class="pdesc">Todo incidente, por menor que sea, debe ser reportado e investigado.</div></div></li>
+          <li class="pitem"><div class="pnum">05</div><div><div class="ptitle">Inspección de herramientas</div><div class="pdesc">Verificar el estado de herramientas y equipos antes de cada uso.</div></div></li>
+          <li class="pitem"><div class="pnum">06</div><div><div class="ptitle">Postura ergonómica</div><div class="pdesc">Adoptar posturas correctas y usar mobiliario ergonómico certificado.</div></div></li>
+        </ul>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <h3 style="font-family:var(--ffd);font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">📖 Módulos del Manual</h3>
+        <div class="acc" role="list">
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 1 — Identificación de Peligros</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">La identificación de peligros es el primer paso del ciclo IPERC. Considerar peligros físicos, químicos, biológicos, ergonómicos y psicosociales en cada puesto. Usar formatos estandarizados y participación activa de los trabajadores.</div></div></div>
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 2 — Evaluación de Riesgos</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">Valorar cada riesgo según probabilidad × consecuencia. Usar la matriz 5×5. El nivel de riesgo determina la urgencia de las medidas de control: eliminación, sustitución, ingeniería, administración, EPP.</div></div></div>
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 3 — Jerarquía de Controles</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">(1) Eliminar el peligro, (2) Sustituir por alternativa menos peligrosa, (3) Controles de ingeniería, (4) Controles administrativos, (5) EPP. El EPP es la última barrera, no la primera opción.</div></div></div>
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 4 — Ergonomía Laboral</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">Adaptar el trabajo al trabajador. Límites de carga manual: 25 kg hombres, 15 kg mujeres. Pausas activas cada 50 min. Evaluar con RULA/REBA para posturas.</div></div></div>
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 5 — Trabajo en Altura</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">Todo trabajo a más de 1.80 m requiere: permiso de trabajo, arnés certificado, línea de vida, supervisor competente y planificación del rescate. Inspección de equipos antes de cada uso.</div></div></div>
+          <div class="acc-item" role="listitem"><button class="acc-trigger" aria-expanded="false"><span>Módulo 6 — Sustancias Peligrosas (GHS)</span><span class="acc-arrow" aria-hidden="true">▼</span></button><div class="acc-body"><div class="acc-content">Toda sustancia peligrosa debe contar con SDS accesible. Almacenamiento segregado, etiquetado GHS, inventario actualizado y kit de derrames disponible en el área de uso.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria" aria-labelledby="gal-title">
+  <div class="container">
+    <div class="reveal"><span class="slabel">Recursos Visuales</span><h2 class="stitle" id="gal-title">Galería de <span>Buenas Prácticas</span></h2><div class="divider"></div></div>
+    <div class="g-tabs" role="tablist" aria-label="Filtros de galería">
+      <button class="tbtn active" role="tab" aria-selected="true"  data-f="all">Todos</button>
+      <button class="tbtn"        role="tab" aria-selected="false" data-f="epp">EPP</button>
+      <button class="tbtn"        role="tab" aria-selected="false" data-f="senal">Señalización</button>
+      <button class="tbtn"        role="tab" aria-selected="false" data-f="altura">Altura</button>
+      <button class="tbtn"        role="tab" aria-selected="false" data-f="ergo">Ergonomía</button>
+    </div>
+    <div class="g-grid reveal" id="gGrid" role="list"></div>
+  </div>
+</section>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lb-close" id="lbc" aria-label="Cerrar imagen">✕</button>
+  <img class="lb-img" id="lbi" src="" alt="" />
+</div>
+
+<!-- NORMATIVA -->
+<section id="normativa" style="background:var(--surface)" aria-labelledby="norm-title">
+  <div class="container">
+    <div class="reveal"><span class="slabel">Marco Legal</span><h2 class="stitle" id="norm-title">Normativa <span>Vigente</span></h2><div class="divider"></div><p style="color:var(--muted);max-width:560px;font-size:.95rem;">El cumplimiento legal es la base de un sistema SST efectivo.</p></div>
+    <div class="norm-grid">
+      <article class="ncard reveal"><div class="nico">🇵🇪</div><div><div class="ncode">Ley N° 29783</div><div class="ntit">Ley de Seguridad y Salud en el Trabajo</div><div class="ndesc">Marco normativo principal. Obligaciones del empleador, derechos del trabajador y el SGSST.</div></div></article>
+      <article class="ncard reveal" style="transition-delay:.05s"><div class="nico">📜</div><div><div class="ncode">D.S. 005-2012-TR</div><div class="ntit">Reglamento Ley 29783</div><div class="ndesc">SGSST, IPERC, plan anual y registros obligatorios.</div></div></article>
+      <article class="ncard reveal" style="transition-delay:.1s"><div class="nico">🌐</div><div><div class="ncode">ISO 45001:2018</div><div class="ntit">Sistema de Gestión SST</div><div class="ndesc">Norma internacional certificable. Ciclo PDCA y mejora continua.</div></div></article>
+      <article class="ncard reveal" style="transition-delay:.15s"><div class="nico">🏗️</div><div><div class="ncode">G.050</div><div class="ntit">Seguridad en Construcción</div><div class="ndesc">Trabajo en altura, andamios, excavaciones en sector construcción.</div></div></article>
+      <article class="ncard reveal" style="transition-delay:.2s"><div class="nico">⚡</div><div><div class="ncode">CNE — Utilización</div><div class="ntit">Código Nacional de Electricidad</div><div class="ndesc">Distancias de seguridad, puesta a tierra, LOTO.</div></div></article>
+      <article class="ncard reveal" style="transition-delay:.25s"><div class="nico">🧪</div><div><div class="ncode">GHS / SGA</div><div class="ntit">Sistema Global Armonizado</div><div class="ndesc">Clasificación y etiquetado de productos químicos. Hojas SDS.</div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- RIESGOS -->
+<section id="riesgos" aria-labelledby="risk-title">
+  <div class="container">
+    <div class="reveal"><span class="slabel">Herramienta IPERC</span><h2 class="stitle" id="risk-title">Matriz de <span>Niveles de Riesgo</span></h2><div class="divider"></div><p style="color:var(--muted);max-width:560px;font-size:.95rem;">Clasificación Probabilidad × Severidad. Base para priorizar acciones correctivas y preventivas.</p></div>
+    <div class="rtbl-wrap reveal" style="transition-delay:.1s">
+      <table role="table" aria-label="Matriz de niveles de riesgo">
+        <thead><tr><th scope="col">Nivel</th><th scope="col">Valor</th><th scope="col">Acción Requerida</th><th scope="col">Plazo</th><th scope="col">Responsable</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rdot r1">Trivial</span></td><td><span class="badge bs">1–4</span></td><td>No requiere acción inmediata</td><td>—</td><td>Trabajador</td></tr>
+          <tr><td><span class="rdot r2">Tolerable</span></td><td><span class="badge bs">5–8</span></td><td>Monitoreo periódico</td><td>3 meses</td><td>Supervisor</td></tr>
+          <tr><td><span class="rdot r3">Moderado</span></td><td><span class="badge bw">9–16</span></td><td>Reducir riesgo. Medidas de control</td><td>1 mes</td><td>Jefe de Área</td></tr>
+          <tr><td><span class="rdot r4">Importante</span></td><td><span class="badge bw">17–24</span></td><td>No iniciar trabajo hasta reducir riesgo</td><td>Inmediato</td><td>Gerencia SST</td></tr>
+          <tr><td><span class="rdot r5">Intolerable</span></td><td><span class="badge bd">25</span></td><td><strong>Paralización inmediata de la tarea</strong></td><td>Ahora</td><td>Alta Dirección</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes" class="clientes" aria-labelledby="cli-title">
+  <div class="container">
+    <div class="clientes-head reveal">
+      <span class="slabel">Empresas que confían en nosotros</span>
+      <h2 class="stitle" id="cli-title" style="text-align:center;">Nuestros <span>Clientes</span></h2>
+      <div class="divider" style="margin-inline:auto;"></div>
+      <p style="color:var(--muted);font-size:.95rem;max-width:560px;margin-inline:auto;text-align:center;">
+        Organizaciones líderes de distintos sectores confían en CISGEIN para proteger
+        a sus trabajadores y garantizar el cumplimiento normativo en SST.
+      </p>
+      <div class="clientes-counter">
+        <div><div class="ccount-num">+50</div><div class="ccount-lbl">Empresas atendidas</div></div>
+        <div><div class="ccount-num">+200</div><div class="ccount-lbl">Trabajadores capacitados</div></div>
+        <div><div class="ccount-num">100%</div><div class="ccount-lbl">Satisfacción de clientes</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRUSEL FILA 1 — izquierda a derecha -->
+  <div class="carousel-wrap reveal" style="margin-top:2.5rem;transition-delay:.1s">
+    <div class="carousel-track carousel-track--fwd" id="cTrack1" aria-label="Clientes CISGEIN — fila 1"></div>
+  </div>
+
+  <!-- CARRUSEL FILA 2 — derecha a izquierda -->
+  <div class="carousel-wrap reveal" style="margin-top:0;transition-delay:.2s">
+    <div class="carousel-track carousel-track--rev" id="cTrack2" aria-label="Clientes CISGEIN — fila 2"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="cta-s" aria-labelledby="cta-title">
+  <div class="container" style="padding:clamp(4rem,8vw,7rem) 0">
+    <div class="cta-inner">
+      <div class="reveal">
+        <span class="slabel">Contacto</span>
+        <h2 class="stitle" id="cta-title">¿Necesitas <span>asesoría SST</span>?</h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);font-size:.95rem;margin-bottom:2rem;">Nuestro equipo de expertos está disponible para implementar un sistema SST eficaz y conforme a normativa vigente.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.9rem"><span style="width:38px;height:38px;border-radius:50%;background:rgba(0,180,255,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">📧</span><a href="mailto:comercial@cisgein.com" style="color:var(--accent);transition:opacity .2s" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">comercial@cisgein.com</a></div>
+          <div style="display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.9rem"><span style="width:38px;height:38px;border-radius:50%;background:rgba(0,180,255,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">📍</span>Trujillo, La Libertad — Perú</div>
+          <div style="display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.9rem"><span style="width:38px;height:38px;border-radius:50%;background:rgba(0,180,255,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">🕐</span>Lun–Vie · 8:00 – 18:00</div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:2rem">
+          <h3 style="font-family:var(--ffd);font-weight:700;margin-bottom:1.5rem;font-size:1.1rem">Envíanos un mensaje</h3>
+          <form id="cForm" action="https://formspree.io/f/comercial@cisgein.com" method="POST" class="fcols" novalidate>
+            <input type="hidden" name="_subject" value="Nueva consulta SST desde cisgein.com">
+            <input type="hidden" name="_language" value="es">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="frow">
+              <div class="form-g"><label class="flabel" for="fnombre">Nombre *</label><input class="finput" type="text" id="fnombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required /></div>
+              <div class="form-g"><label class="flabel" for="fempresa">Empresa</label><input class="finput" type="text" id="fempresa" name="empresa" placeholder="Empresa" autocomplete="organization" /></div>
+            </div>
+            <div class="frow">
+              <div class="form-g"><label class="flabel" for="femail">Correo electrónico *</label><input class="finput" type="email" id="femail" name="email" placeholder="correo@empresa.com" autocomplete="email" required /></div>
+              <div class="form-g"><label class="flabel" for="ftelefono">Teléfono / WhatsApp</label><input class="finput" type="tel" id="ftelefono" name="telefono" placeholder="+51 9XX XXX XXX" autocomplete="tel" /></div>
+            </div>
+            <div class="form-g">
+              <label class="flabel" for="fservicio">Servicio de interés</label>
+              <select class="fselect" id="fservicio" name="servicio">
+                <option value="">Seleccionar…</option>
+                <option value="Análisis SST">Análisis SST</option>
+                <option value="Implementación de Línea Base">Implementación de Línea Base</option>
+                <option value="Implementación SGSST">Implementación SGSST</option>
+                <option value="Capacitación y Entrenamiento">Capacitación y Entrenamiento</option>
+                <option value="Auditorías SST">Auditorías SST</option>
+                <option value="Gestión Ambiental">Gestión Ambiental</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-g"><label class="flabel" for="fmensaje">Mensaje *</label><textarea class="ftxt" id="fmensaje" name="mensaje" placeholder="Cuéntanos sobre tu necesidad…" required></textarea></div>
+            <div id="fErr" style="display:none;background:rgba(255,78,78,.1);border:1px solid rgba(255,78,78,.3);border-radius:var(--rsm);padding:10px 14px;font-size:.85rem;color:var(--danger)"></div>
+            <div id="fOk"  style="display:none;background:rgba(0,255,200,.08);border:1px solid rgba(0,255,200,.25);border-radius:var(--rsm);padding:10px 14px;font-size:.85rem;color:var(--accent2)">✅ ¡Mensaje enviado con éxito! Te contactaremos pronto a tu correo.</div>
+            <button class="btn btn-p" type="submit" id="fBtn" style="width:100%;justify-content:center"><span id="fBtnText">Enviar mensaje →</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="fg">
+      <div><div class="fbrand">CISGEIN</div><p class="ftag">⫸ Tu vida y tu trabajo nos importan.<br>Sistema Integrado de Gestión SST — 2025.</p></div>
+      <div><div class="fctitle">Servicios</div><ul class="flinks"><li><a href="#servicios">Análisis SST</a></li><li><a href="#servicios">Línea Base</a></li><li><a href="#servicios">Implementación SGSST</a></li><li><a href="#servicios">Capacitación</a></li><li><a href="#servicios">Auditorías</a></li></ul></div>
+      <div><div class="fctitle">Recursos</div><ul class="flinks"><li><a href="#manual">Manual SST</a></li><li><a href="#galeria">Galería</a></li><li><a href="#riesgos">Matriz IPERC</a></li><li><a href="#hseq">Sistema HSEQ</a></li><li><a href="#clientes">Nuestros Clientes</a></li></ul></div>
+      <div><div class="fctitle">Normativa</div><ul class="flinks"><li><a href="#normativa">Ley 29783</a></li><li><a href="#normativa">ISO 45001</a></li><li><a href="#normativa">D.S. 005-2012-TR</a></li><li><a href="#normativa">G.050</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <span>© 2025 CISGEIN · Seguridad y Salud en el Trabajo · Trujillo, Perú</span>
+      <div class="fleg"><a href="#">Política SST</a><a href="#">Privacidad</a><a href="#">Accesibilidad</a></div>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Volver al inicio">↑</button>
+
+<!-- PARTÍCULAS DE FONDO -->
+<div class="particles-bg" id="particlesBg" aria-hidden="true"></div>
+
+<!-- BOTÓN WHATSAPP -->
+<a id="wa-btn"
+   href="https://wa.me/51905447732?text=Hola%20CISGEIN%2C%20me%20interesa%20una%20asesor%C3%ADa%20en%20SST."
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp"
+   title="Chatea con nosotros en WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="16" cy="16" r="16" fill="#25d366"/>
+    <path d="M22.5 9.5C21 7.9 18.9 7 16.6 7C11.9 7 8.1 10.8 8.1 15.5C8.1 17.1 8.5 18.6 9.3 19.9L8 24L12.3 22.7C13.6 23.4 15 23.8 16.5 23.8H16.6C21.2 23.8 25 20 25 15.3C25 13 24.1 10.9 22.5 9.5ZM16.6 22.3C15.2 22.3 13.9 21.9 12.7 21.2L12.4 21L9.9 21.7L10.6 19.3L10.3 19C9.5 17.8 9.1 16.4 9.1 15.5C9.1 11.4 12.4 8.1 16.5 8.1C18.5 8.1 20.3 8.9 21.7 10.2C23.1 11.6 23.9 13.4 23.9 15.3C24 19.4 20.7 22.3 16.6 22.3ZM20.7 17.3C20.5 17.2 19.4 16.6 19.2 16.5C19 16.5 18.9 16.4 18.7 16.6C18.5 16.8 18.1 17.4 17.9 17.5C17.8 17.6 17.6 17.6 17.4 17.6C17.2 17.5 16.6 17.3 15.8 16.6C15.2 16.1 14.8 15.4 14.7 15.2C14.6 15 14.7 14.9 14.8 14.7C14.9 14.6 15 14.5 15.1 14.3C15.2 14.2 15.2 14.1 15.3 13.9C15.4 13.8 15.3 13.6 15.3 13.5C15.3 13.4 14.8 12.2 14.6 11.7C14.4 11.3 14.2 11.3 14.1 11.3C14 11.3 13.8 11.3 13.6 11.3C13.4 11.3 13.2 11.4 13 11.6C12.8 11.8 12.2 12.3 12.2 13.5C12.2 14.7 13 15.8 13.1 16C13.2 16.1 14.7 18.4 17 19.3C17.7 19.6 18.3 19.8 18.7 19.9C19.4 20.1 20 20.1 20.5 20C21.1 19.9 22.2 19.3 22.4 18.7C22.6 18.1 22.6 17.6 22.5 17.5C22.5 17.4 22.3 17.4 20.7 17.3Z" fill="white"/>
+  </svg>
+  <span id="wa-label">&#9001;Escr&#237;benos!</span>
+</a>
+
+<!-- JS — IIFE, sin vars globales, sin warnings -->
+<script>
+(function(){
+  'use strict';
+
+  /* ── CLIENTES — SVG inline con colores exactos de cada marca ── */
+  var SVGS = {
+
+    /* ── CONHARQ — terra cotta & gold archaeology ── */
+    conharq: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="cq1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8B4513"/><stop offset="100%" stop-color="#C8860A"/></linearGradient></defs><ellipse cx="80" cy="34" rx="74" ry="28" fill="none" stroke="url(#cq1)" stroke-width="2.5"/><ellipse cx="80" cy="34" rx="62" ry="20" fill="none" stroke="#C8860A" stroke-width="1" stroke-dasharray="4 3"/><path d="M55 34 L65 24 L75 30 L80 22 L85 30 L95 24 L105 34" fill="none" stroke="#8B4513" stroke-width="1.8" stroke-linejoin="round"/><text x="80" y="37" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" letter-spacing="3.5" fill="#4A1A00">CONHARQ</text><text x="80" y="49" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#8B4513" letter-spacing="0.8">Consultoría · Arqueología</text></svg>',
+
+    /* ── REPLICA — modern tech green ── */
+    replica: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="rp1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00C853"/><stop offset="100%" stop-color="#00897B"/></linearGradient></defs><line x1="44" y1="8" x2="44" y2="36" stroke="url(#rp1)" stroke-width="3" stroke-linecap="round"/><polygon points="44,6 39,16 49,16" fill="#00C853"/><circle cx="44" cy="36" r="3.5" fill="#00897B"/><text x="56" y="27" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="200" letter-spacing="-0.5" fill="#1A1A1A">replica</text><rect x="56" y="31" width="72" height="1.5" rx="1" fill="url(#rp1)"/><text x="92" y="45" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#555" letter-spacing="0.5">Conectando <tspan font-weight="700" fill="#00897B">soluciones</tspan></text></svg>',
+
+    /* ── COMUNICORP — bold red ── */
+    comunicorp: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="cc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF3D00"/><stop offset="100%" stop-color="#D50000"/></linearGradient></defs><g transform="translate(14,10)"><rect x="24" y="0" width="22" height="16" rx="3" fill="none" stroke="url(#cc1)" stroke-width="2.5"/><rect x="12" y="6" width="22" height="16" rx="3" fill="none" stroke="url(#cc1)" stroke-width="2"/><rect x="0" y="12" width="22" height="16" rx="3" fill="none" stroke="url(#cc1)" stroke-width="1.5"/><circle cx="23" cy="14" r="3.5" fill="#FF3D00"/></g><text x="100" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Comuni<tspan fill="#FF3D00">corp</tspan></text><text x="100" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#666" letter-spacing="0.3">Comunicaciones Corporativas</text><text x="100" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#666">del Norte</text></svg>',
+
+    /* ── FACOIMPEC — vivid red industrial ── */
+    facoimpec: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><radialGradient id="fi1" cx="35%" cy="35%"><stop offset="0%" stop-color="#FF5252"/><stop offset="100%" stop-color="#C62828"/></radialGradient></defs><circle cx="44" cy="30" r="22" fill="none" stroke="url(#fi1)" stroke-width="3"/><circle cx="44" cy="30" r="14" fill="none" stroke="#FF5252" stroke-width="1" stroke-dasharray="3 3"/><text x="44" y="37" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" fill="url(#fi1)">F</text><text x="104" y="26" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11.5" font-weight="900" letter-spacing="1" fill="#C62828">FACOIMPEC</text><text x="104" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" letter-spacing="2" fill="#FF5252">EIRL</text><line x1="80" y1="47" x2="128" y2="47" stroke="#FF5252" stroke-width="1" opacity="0.5"/></svg>',
+
+    /* ── CIBERTEC — deep navy tech ── */
+    cibertec: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="ct1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0D47A1"/><stop offset="100%" stop-color="#1565C0"/></linearGradient></defs><rect x="52" y="8" width="56" height="7" rx="3.5" fill="url(#ct1)"/><rect x="56" y="19" width="48" height="7" rx="3.5" fill="url(#ct1)" opacity="0.82"/><rect x="60" y="30" width="40" height="7" rx="3.5" fill="url(#ct1)" opacity="0.65"/><circle cx="80" cy="11.5" r="2.5" fill="white"/><circle cx="80" cy="22.5" r="2.5" fill="white"/><text x="80" y="57" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2.5" fill="url(#ct1)">CIBERTEC</text></svg>',
+
+    /* ── PEVAL GROUP — electric blue network ── */
+    peval: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="pv1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient></defs><g><circle cx="80" cy="22" r="4.5" fill="url(#pv1)"/><circle cx="55" cy="12" r="3.5" fill="#42A5F5"/><circle cx="105" cy="12" r="3.5" fill="#42A5F5"/><circle cx="48" cy="34" r="3" fill="#1E88E5"/><circle cx="112" cy="34" r="3" fill="#1E88E5"/><circle cx="64" cy="44" r="2.5" fill="#1565C0"/><circle cx="96" cy="44" r="2.5" fill="#1565C0"/><line x1="80" y1="22" x2="55" y2="12" stroke="#1E88E5" stroke-width="1.5" opacity="0.7"/><line x1="80" y1="22" x2="105" y2="12" stroke="#1E88E5" stroke-width="1.5" opacity="0.7"/><line x1="80" y1="22" x2="48" y2="34" stroke="#42A5F5" stroke-width="1.2" opacity="0.6"/><line x1="80" y1="22" x2="112" y2="34" stroke="#42A5F5" stroke-width="1.2" opacity="0.6"/><line x1="48" y1="34" x2="64" y2="44" stroke="#1565C0" stroke-width="1" opacity="0.5"/><line x1="112" y1="34" x2="96" y2="44" stroke="#1565C0" stroke-width="1" opacity="0.5"/></g><text x="69" y="59" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="url(#pv1)">PEVAL</text><text x="101" y="59" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1" fill="#1E88E5">GROUP</text></svg>',
+
+    /* ── ASCENSORES TEI — forest green brand ── */
+    ascensores: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="as1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2E7D32"/><stop offset="100%" stop-color="#1B5E20"/></linearGradient></defs><g transform="translate(16,6)"><path d="M22,30 C22,30 6,24 9,11 C12,-2 24,2 24,12 C24,2 36,-2 39,11 C42,24 26,30 26,30 Z" fill="url(#as1)"/><path d="M26,30 C26,30 42,24 39,11 C36,-2 24,2 24,12 Z" fill="#E65100" opacity="0.95"/><rect x="22" y="30" width="4" height="7" rx="1" fill="#1B5E20"/></g><text x="100" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.5" fill="#37474F">ASCENSORES</text><text x="100" y="42" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" font-weight="900" letter-spacing="2.5" fill="url(#as1)">TEI</text></svg>',
+
+    /* ── SOL DE LAREDO — bright orange sun ── */
+    sollaredo: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><radialGradient id="sl1" cx="40%" cy="40%"><stop offset="0%" stop-color="#FFB300"/><stop offset="100%" stop-color="#E65100"/></radialGradient></defs><circle cx="46" cy="32" r="20" fill="url(#sl1)"/><circle cx="46" cy="32" r="12" fill="#FFCC02"/><circle cx="46" cy="32" r="5" fill="#FF6D00"/><line x1="46" y1="8" x2="46" y2="14" stroke="#FFB300" stroke-width="2.5" stroke-linecap="round"/><line x1="46" y1="50" x2="46" y2="56" stroke="#FFB300" stroke-width="2.5" stroke-linecap="round"/><line x1="22" y1="32" x2="28" y2="32" stroke="#FFB300" stroke-width="2.5" stroke-linecap="round"/><line x1="64" y1="32" x2="70" y2="32" stroke="#FFB300" stroke-width="2.5" stroke-linecap="round"/><line x1="29" y1="15" x2="33" y2="19" stroke="#FFB300" stroke-width="2" stroke-linecap="round"/><line x1="59" y1="45" x2="63" y2="49" stroke="#FFB300" stroke-width="2" stroke-linecap="round"/><line x1="63" y1="15" x2="59" y2="19" stroke="#FFB300" stroke-width="2" stroke-linecap="round"/><line x1="33" y1="45" x2="29" y2="49" stroke="#FFB300" stroke-width="2" stroke-linecap="round"/><text x="116" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#E65100">Sol de</text><text x="116" y="45" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#E65100">Laredo</text></svg>',
+
+    /* ── MUNICIPALIDAD MOCHE — gold heraldry ── */
+    moche: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="mc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F9A825"/><stop offset="100%" stop-color="#E65100"/></linearGradient></defs><circle cx="30" cy="32" r="22" fill="none" stroke="url(#mc1)" stroke-width="2.5"/><circle cx="30" cy="32" r="14" fill="none" stroke="#F9A825" stroke-width="1.2"/><polygon points="30,12 36,24 30,20 24,24" fill="url(#mc1)"/><rect x="26" y="28" width="8" height="14" rx="1.5" fill="none" stroke="url(#mc1)" stroke-width="1.8"/><line x1="26" y1="34" x2="34" y2="34" stroke="#F9A825" stroke-width="1"/><text x="100" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="#78550A" letter-spacing="0.5">Municipalidad Distrital</text><text x="100" y="38" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" font-weight="900" letter-spacing="2" fill="url(#mc1)">MOCHE</text><line x1="68" y1="44" x2="132" y2="44" stroke="#F9A825" stroke-width="1" opacity="0.5"/></svg>',
+
+    /* ── TOSTAO — warm coffee brown ── */
+    tostao: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><radialGradient id="to1" cx="40%" cy="35%"><stop offset="0%" stop-color="#6D4C41"/><stop offset="100%" stop-color="#3E2723"/></radialGradient></defs><g transform="translate(12,4)"><ellipse cx="26" cy="32" rx="20" ry="24" fill="url(#to1)"/><ellipse cx="21" cy="22" rx="5" ry="5.5" fill="none" stroke="#BCAAA4" stroke-width="1.8"/><ellipse cx="31" cy="22" rx="5" ry="5.5" fill="none" stroke="#BCAAA4" stroke-width="1.8"/><ellipse cx="26" cy="28" rx="9" ry="5.5" fill="#5D4037"/><ellipse cx="21.5" cy="28" r="2.5" fill="#1A0E08"/><ellipse cx="30.5" cy="28" r="2.5" fill="#1A0E08"/><circle cx="22" cy="27" r="1" fill="white" opacity="0.6"/><circle cx="31" cy="27" r="1" fill="white" opacity="0.6"/><path d="M18,36 Q26,44 34,36" fill="none" stroke="#FFCCBC" stroke-width="2.2" stroke-linecap="round"/><path d="M46,10 Q50,6 50,12" fill="none" stroke="#A1887F" stroke-width="1.5" stroke-linecap="round"/></g><text x="105" y="26" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" font-weight="900" letter-spacing="1.5" fill="url(#to1)">TOSTAO</text><text x="105" y="40" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" letter-spacing="2.5" fill="#8D6E63">CAFÉ · PASTELERÍA</text></svg>',
+
+    /* ── SIGUE TU NORTE — compass blue ── */
+    siguenorte: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="sn1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1565C0"/><stop offset="100%" stop-color="#0288D1"/></linearGradient></defs><circle cx="32" cy="32" r="22" fill="none" stroke="url(#sn1)" stroke-width="1.5"/><polygon points="32,10 40,34 32,28 24,34" fill="url(#sn1)"/><polygon points="32,54 24,30 32,36 40,30" fill="#90CAF9"/><line x1="10" y1="32" x2="54" y2="32" stroke="url(#sn1)" stroke-width="1" opacity="0.4"/><circle cx="32" cy="32" r="3.5" fill="url(#sn1)"/><text x="104" y="27" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0D47A1">Sigue</text><text x="104" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#1565C0">Tu Norte</text></svg>',
+
+    /* ── CELL SERVICE — signal red ── */
+    cellservice: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 68"><defs><linearGradient id="cs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F44336"/><stop offset="100%" stop-color="#B71C1C"/></linearGradient></defs><g transform="translate(12,5)"><rect x="14" y="2" width="24" height="40" rx="4" fill="url(#cs1)"/><rect x="17" y="6" width="18" height="28" rx="2" fill="white"/><circle cx="26" cy="38" r="2.5" fill="white"/><rect x="23" y="0" width="6" height="2.5" rx="1" fill="#EF9A9A"/><path d="M4,10 Q0,22 4,34" fill="none" stroke="#F44336" stroke-width="2" stroke-linecap="round"/><path d="M8,14 Q5,22 8,30" fill="none" stroke="#E53935" stroke-width="1.5" stroke-linecap="round"/><path d="M48,10 Q52,22 48,34" fill="none" stroke="#F44336" stroke-width="2" stroke-linecap="round"/><path d="M44,14 Q47,22 44,30" fill="none" stroke="#E53935" stroke-width="1.5" stroke-linecap="round"/></g><text x="107" y="24" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" letter-spacing="2" fill="#1A1A1A">CELL</text><text x="107" y="40" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" letter-spacing="2" fill="url(#cs1)">SERVICE</text><text x="107" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#777">Distribuidor Autorizado Claro</text></svg>'
+  };
+
+  var CLIENTES = [
+    { nombre:'CONHARQ',               sub:'Consultoría Nueva Horizonte Arqueológica', svg: SVGS.conharq    },
+    { nombre:'Replica',               sub:'Conectando soluciones',                    svg: SVGS.replica    },
+    { nombre:'Comunicorp',            sub:'Comunicaciones Corporativas del Norte',    svg: SVGS.comunicorp },
+    { nombre:'FACOIMPEC EIRL',        sub:'',                                         svg: SVGS.facoimpec  },
+    { nombre:'CIBERTEC',              sub:'',                                         svg: SVGS.cibertec   },
+    { nombre:'PEVAL GROUP',           sub:'',                                         svg: SVGS.peval      },
+    { nombre:'Ascensores TEI',        sub:'',                                         svg: SVGS.ascensores },
+    { nombre:'Sol de Laredo',         sub:'',                                         svg: SVGS.sollaredo  },
+    { nombre:'Municipalidad Moche',   sub:'Municipalidad Distrital',                  svg: SVGS.moche      },
+    { nombre:'TOSTAO',                sub:'Café & Pastelería',                        svg: SVGS.tostao     },
+    { nombre:'Sigue Tu Norte',        sub:'',                                         svg: SVGS.siguenorte },
+    { nombre:'CELL SERVICE',          sub:'Distribuidor Autorizado Claro',            svg: SVGS.cellservice}
+  ];
+
+  /* Construir tarjeta con SVG inline — cero dependencias externas */
+  function makeCard(c) {
+    var card = document.createElement('div');
+    card.className = 'logo-card';
+    card.setAttribute('aria-label', c.nombre + (c.sub ? ' — ' + c.sub : ''));
+    card.setAttribute('data-tooltip', c.nombre);
+    var svgWrap = document.createElement('div');
+    svgWrap.style.cssText = 'width:100%;flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;';
+    svgWrap.innerHTML = c.svg;
+    var svgEl = svgWrap.querySelector('svg');
+    if (svgEl) { svgEl.style.pointerEvents = 'none'; svgEl.style.width='100%'; svgEl.style.height='100%'; }
+    card.appendChild(svgWrap);
+    if (c.nombre) {
+      var badge = document.createElement('div');
+      badge.className = 'logo-badge';
+      badge.textContent = c.nombre;
+      card.appendChild(badge);
+    }
+    return card;
+  }
+
+  /* Poblar carrusel — duplicar para loop infinito sin JS */
+  function buildCarousel(trackId, items) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    items.forEach(function(c){ track.appendChild(makeCard(c)); });
+    items.forEach(function(c){ track.appendChild(makeCard(c)); });
+  }
+
+  buildCarousel('cTrack1', CLIENTES.slice(0, 6));
+  buildCarousel('cTrack2', CLIENTES.slice(6, 12));
+
+  /* ── Galería ──────────────────────────────────────────── */
+  var G=[
+    {src:'https://cisgein.github.io/images/img1.webp', label:'Equipo de Protección Personal',   cat:'epp'},
+    {src:'https://cisgein.github.io/images/img2.webp', label:'Señalización de Seguridad',        cat:'senal'},
+    {src:'https://cisgein.github.io/images/img3.webp', label:'Trabajo en Altura',                cat:'altura'},
+    {src:'https://cisgein.github.io/images/img4.webp', label:'Postura Ergonómica',               cat:'ergo'},
+    {src:'https://cisgein.github.io/images/img5.webp', label:'EPP para Soldadura',               cat:'epp'},
+    {src:'https://cisgein.github.io/images/img6.webp', label:'Zona de Emergencia',               cat:'senal'},
+    {src:'https://cisgein.github.io/images/img7.webp', label:'Andamio Certificado',              cat:'altura'},
+    {src:'https://cisgein.github.io/images/img8.webp', label:'Manejo de Cargas',                 cat:'ergo'},
+    {src:'https://cisgein.github.io/images/img9.webp', label:'Guantes de Protección',            cat:'epp'},
+    {src:'https://cisgein.github.io/images/img10.webp',label:'Extintor Operativo',               cat:'senal'},
+    {src:'https://cisgein.github.io/images/img11.webp',label:'Línea de Vida Horizontal',         cat:'altura'},
+    {src:'https://cisgein.github.io/images/img12.webp',label:'Puesto de Trabajo Ergonómico',     cat:'ergo'}
+  ];
+
+  function renderGallery(f){
+    var grid=document.getElementById('gGrid');
+    var items=f==='all'?G:G.filter(function(i){return i.cat===f;});
+    grid.innerHTML=items.map(function(x){
+      return '<div class="gcard" role="listitem" tabindex="0" data-s="'+x.src+'" data-l="'+x.label+'" aria-label="'+x.label+'">'
+        +'<img src="'+x.src+'" alt="'+x.label+'" loading="lazy"/>'
+        +'<div class="goverlay"><span class="glabel">'+x.label+'</span></div></div>';
+    }).join('');
+    grid.querySelectorAll('.gcard').forEach(function(c){
+      c.addEventListener('click',function(){openLb(c.dataset.s,c.dataset.l);});
+      c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(c.dataset.s,c.dataset.l);}});
+    });
+  }
+
+  document.querySelectorAll('.tbtn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.tbtn').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
+      b.classList.add('active');b.setAttribute('aria-selected','true');
+      renderGallery(b.dataset.f);
+    });
+  });
+
+  /* Lightbox */
+  var lb=document.getElementById('lb');
+  var lbi=document.getElementById('lbi');
+  var lbc=document.getElementById('lbc');
+  function openLb(s,a){lbi.src=s;lbi.alt=a;lb.classList.add('open');document.body.style.overflow='hidden';lbc.focus();}
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+  lbc.addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+
+  /* Acordeón */
+  document.querySelectorAll('.acc-trigger').forEach(function(t){
+    t.addEventListener('click',function(){
+      var item=t.closest('.acc-item');
+      var wasOpen=item.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(function(i){i.classList.remove('open');i.querySelector('.acc-trigger').setAttribute('aria-expanded','false');});
+      if(!wasOpen){item.classList.add('open');t.setAttribute('aria-expanded','true');}
+    });
+  });
+
+  /* Nav + progress */
+  var nav=document.getElementById('nav');
+  var pb=document.getElementById('pb');
+  var btt=document.getElementById('btt');
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY;
+    nav.classList.toggle('scrolled',s>40);
+    var dh=document.documentElement.scrollHeight-window.innerHeight;
+    pb.style.width=(dh>0?(s/dh)*100:0)+'%';
+    btt.classList.toggle('visible',s>400);
+  },{passive:true});
+  btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* Mobile nav */
+  var hbg=document.getElementById('hbg');
+  var nmob=document.getElementById('nmob');
+  hbg.addEventListener('click',function(){
+    var open=nmob.classList.toggle('open');
+    hbg.setAttribute('aria-expanded',String(open));
+  });
+  nmob.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){nmob.classList.remove('open');hbg.setAttribute('aria-expanded','false');});
+  });
+
+  /* Reveal */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* Formulario — envío directo vía Formspree a comercial@cisgein.com */
+  var cForm=document.getElementById('cForm');
+  var fErr=document.getElementById('fErr');
+  var fOk=document.getElementById('fOk');
+  var fBtn=document.getElementById('fBtn');
+  var fBtnText=document.getElementById('fBtnText');
+  function isValidEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+
+  if(cForm){
+    cForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      fErr.style.display='none';
+      fOk.style.display='none';
+
+      var n=document.getElementById('fnombre').value.trim();
+      var em=document.getElementById('femail').value.trim();
+      var m=document.getElementById('fmensaje').value.trim();
+
+      if(!n){fErr.textContent='Por favor ingresa tu nombre.';fErr.style.display='block';document.getElementById('fnombre').focus();return;}
+      if(!em||!isValidEmail(em)){fErr.textContent='Por favor ingresa un correo electrónico válido.';fErr.style.display='block';document.getElementById('femail').focus();return;}
+      if(!m){fErr.textContent='Por favor escribe tu mensaje.';fErr.style.display='block';document.getElementById('fmensaje').focus();return;}
+
+      fBtn.disabled=true;
+      fBtnText.textContent='Enviando…';
+
+      var data=new FormData(cForm);
+
+      fetch('https://formspree.io/f/comercial@cisgein.com',{
+        method:'POST',
+        body:data,
+        headers:{Accept:'application/json'}
+      })
+      .then(function(resp){return resp.json().then(function(json){return{ok:resp.ok,json:json};});})
+      .then(function(r){
+        if(r.ok){
+          fOk.style.display='block';
+          cForm.reset();
+        } else {
+          var msg=(r.json&&r.json.errors&&r.json.errors[0]&&r.json.errors[0].message)||'Error al enviar. Por favor escríbenos a comercial@cisgein.com.';
+          fErr.textContent=msg;
+          fErr.style.display='block';
+        }
+      })
+      .catch(function(){
+        fErr.textContent='Sin conexión. Por favor escríbenos directamente a comercial@cisgein.com';
+        fErr.style.display='block';
+      })
+      .finally(function(){
+        fBtn.disabled=false;
+        fBtnText.textContent='Enviar mensaje →';
+      });
+    });
+  }
+
+  renderGallery('all');
+}());
+</script>
+
+<!-- SEGURIDAD ANTI-SCRAPING + EFECTOS 3D EN LOGOS -->
+<script>
+(function(){
+'use strict';
+
+/* 1. SEGURIDAD */
+document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+document.addEventListener('keydown', function(e){
+  if(e.key==='F12'){ e.preventDefault(); return false; }
+  if(e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].indexOf(e.key)>-1){ e.preventDefault(); return false; }
+  if(e.ctrlKey && ['u','U','s','S'].indexOf(e.key)>-1){ e.preventDefault(); return false; }
+});
+
+/* Protección selección texto en zonas sensibles */
+['.ftag','.fbot span','.footer .fbot'].forEach(function(sel){
+  document.querySelectorAll(sel).forEach(function(el){
+    el.style.userSelect='none'; el.style.webkitUserSelect='none';
+    el.addEventListener('copy',function(e){ e.preventDefault(); });
+  });
+});
+
+/* Proteger contenido copiado */
+document.querySelectorAll('.scard,.pcard,.ncard').forEach(function(card){
+  card.addEventListener('copy',function(e){
+    e.preventDefault();
+    if(e.clipboardData) e.clipboardData.setData('text/plain','\u00A9 2025 CISGEIN \u2014 Contenido protegido');
+  });
+});
+
+/* Trampa honeypot para bots */
+(function(){
+  var trap=document.createElement('div');
+  trap.style.cssText='position:absolute;top:-9999px;left:-9999px;opacity:0;pointer-events:none;';
+  trap.className='hp-field'; trap.textContent='bot@trap.cisgein.invalid';
+  document.body.appendChild(trap);
+})();
+
+/* No arrastrar imágenes */
+document.querySelectorAll('img').forEach(function(img){
+  img.setAttribute('draggable','false');
+  img.addEventListener('dragstart',function(e){ e.preventDefault(); });
+  img.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+});
+
+/* Meta robots anti-scraping */
+(function(){
+  if(!document.querySelector('meta[name="robots"]')){
+    var m=document.createElement('meta'); m.name='robots'; m.content='noindex,nofollow,noimageindex';
+    document.head.appendChild(m);
+  }
+})();
+
+
+/* ── 3D TILT ENGINE — real perspective + specular sheen ── */
+function apply3D(card){
+  var raf = null;
+  var targetRx = 0, targetRy = 0, currentRx = 0, currentRy = 0;
+  var isOver = false;
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function frame(){
+    currentRx = lerp(currentRx, isOver ? targetRx : 0, 0.12);
+    currentRy = lerp(currentRy, isOver ? targetRy : 0, 0.12);
+    var still = Math.abs(currentRx)<0.05 && Math.abs(currentRy)<0.05 && !isOver;
+    if(still){ currentRx=0; currentRy=0; card.style.transform=''; card.style.boxShadow=''; raf=null; return; }
+    var shadow = 'translateZ(0)';
+    card.style.transform = 'perspective(700px) rotateX('+currentRx+'deg) rotateY('+currentRy+'deg) translateY(-7px) scale(1.07)';
+    var gx = 50 + currentRy * 2.5;
+    var gy = 50 - currentRx * 2.5;
+    card.style.setProperty('--sheen-x', gx+'%');
+    card.style.setProperty('--sheen-y', gy+'%');
+    var sx = currentRy * 1.6;
+    var sy = -currentRx * 1.6 + 16;
+    card.style.boxShadow =
+      sx+'px '+sy+'px 32px rgba(0,0,0,.18),'
+      +'0 0 0 2px rgba(0,180,255,.35),'
+      +'inset 0 1px 0 rgba(255,255,255,.8)';
+    card.style.borderColor='rgba(0,180,255,.4)';
+    raf = requestAnimationFrame(frame);
+  }
+
+  card.addEventListener('mouseenter', function(){
+    isOver = true;
+    card.style.transition = 'none';
+    if(!raf) raf = requestAnimationFrame(frame);
+  });
+
+  card.addEventListener('mousemove', function(e){
+    var r = card.getBoundingClientRect();
+    var dx = (e.clientX-(r.left+r.width/2)) / (r.width/2);
+    var dy = (e.clientY-(r.top+r.height/2)) / (r.height/2);
+    targetRx = dy * 16;
+    targetRy = -dx * 16;
+  });
+
+  card.addEventListener('mouseleave', function(){
+    isOver = false;
+    targetRx = 0; targetRy = 0;
+    card.style.transition = 'box-shadow .35s ease, border-color .35s ease';
+    card.style.borderColor = '';
+    if(!raf) raf = requestAnimationFrame(frame);
+  });
+}
+
+function applyToAll(){
+  document.querySelectorAll('.logo-card').forEach(function(c){
+    if(!c.dataset.tilt3d){ c.dataset.tilt3d='1'; apply3D(c); }
+  });
+}
+applyToAll();
+
+var mo=new MutationObserver(function(muts){
+  muts.forEach(function(m){
+    m.addedNodes.forEach(function(n){
+      if(n.nodeType!==1) return;
+      if(n.classList&&n.classList.contains('logo-card')&&!n.dataset.tilt3d){ n.dataset.tilt3d='1'; apply3D(n); }
+      if(n.querySelectorAll) n.querySelectorAll('.logo-card:not([data-tilt3d])').forEach(function(c){ c.dataset.tilt3d='1'; apply3D(c); });
+    });
+  });
+});
+mo.observe(document.body,{childList:true,subtree:true});
+
+
+/* 3. PARTÍCULAS FLOTANTES */
+(function(){
+  var bg=document.getElementById('particlesBg');
+  if(!bg) return;
+  for(var i=0;i<18;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    var size=Math.random()*4+2;
+    p.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(Math.random()*100)+'%;animation-duration:'+(Math.random()*20+15)+'s;animation-delay:'+(Math.random()*15)+'s;opacity:'+(Math.random()*.35+.08)+';';
+    bg.appendChild(p);
+  }
+})();
+
+
+/* 4. EFECTO RIPPLE EN BOTONES */
+document.querySelectorAll('.btn,.tbtn,#fBtn').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    var r=document.createElement('span'); r.className='ripple';
+    var rect=btn.getBoundingClientRect();
+    var size=Math.max(rect.width,rect.height);
+    r.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(e.clientX-rect.left-size/2)+'px;top:'+(e.clientY-rect.top-size/2)+'px;';
+    btn.appendChild(r);
+    setTimeout(function(){ r.remove(); },700);
+  });
+});
+
+
+/* 5. CURSOR GLOW */
+(function(){
+  var g=document.createElement('div');
+  g.style.cssText='position:fixed;width:18px;height:18px;border-radius:50%;background:rgba(0,180,255,.22);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:screen;opacity:0;';
+  document.body.appendChild(g);
+  document.addEventListener('mousemove',function(e){ g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; g.style.opacity='1'; });
+  document.addEventListener('mouseleave',function(){ g.style.opacity='0'; });
+  document.querySelectorAll('a,button,.logo-card,.scard,.pcard').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ g.style.width='36px'; g.style.height='36px'; g.style.background='rgba(0,180,255,.35)'; });
+    el.addEventListener('mouseleave',function(){ g.style.width='18px'; g.style.height='18px'; g.style.background='rgba(0,180,255,.22)'; });
+  });
+})();
+
+
+/* 6. CONTADOR ANIMADO EN NÚMEROS */
+(function(){
+  function animCount(el,end,suf){
+    var start=null;
+    var dur=1600;
+    function step(ts){
+      if(!start) start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var e2=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(e2*end)+suf;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io3=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      var el=entry.target;
+      var txt=el.textContent.replace(/[^\d]/g,'');
+      if(txt){ animCount(el,parseInt(txt,10),el.textContent.replace(/[\d]/g,'')); }
+      io3.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.ccount-num').forEach(function(el){ io3.observe(el); });
+})();
+
+}());
+</script>
+</body>
+</html>
